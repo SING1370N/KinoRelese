@@ -1,0 +1,173 @@
+{% extends "layout/basic_main.html" %}
+{% load static %}
+{% block content %}
+    <header>
+        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active"> <img class="d-block mx-auto" src="../../static/images/1%20(1).jpg" alt="First slide" width="1280" height="720">
+                    <div class="carousel-caption" style="background: rgba(0,0,0,0.3)">
+                        <h5>Фильм 1</h5>
+                        <p>Опис 1</p>
+                    </div>
+                </div>
+                <div class="carousel-item"> <img class="d-block mx-auto" src="../../static/images/1%20(2).jpg" alt="Second slide" width="1280" height="720">
+                    <div class="carousel-caption" style="background: rgba(0,0,0,0.3)">
+                        <h5>Фильм 2</h5>
+                        <p>Опис 2</p>
+                    </div>
+                </div>
+                <div class="carousel-item"> <img class="d-block mx-auto" src="../../static/images/1%20(3).jpg" alt="Third slide" width="1280" height="720">
+                    <div class="carousel-caption" style="background: rgba(0,0,0,0.3)">
+                        <h5>Фильм 3</h5>
+                        <p>Опис 3</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a> </div>
+
+
+        <div  style="background: rgba(255,255,255,0)">
+            <br/>
+        </div>
+    </header>
+
+    <section>
+        <div class="container" style="background: rgba(255,255,255,0.27)">
+            <div class="row">
+
+                <div class="col-lg-12 mb-4 mt-2 text-center">
+
+                    <h2>Ніші кінотеатри</h2>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container" style="background: rgba(255,255,255,0.27)">
+
+            <div class="row">
+
+                {% for cin in cinema %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+{#                        <a href="{% url 'film_update' film.pk %}">#}
+
+                        {% if cin.logo %}
+                            <img src="{{ cin.logo.url }}" data-holder-rendered="true" height="500" width="350"
+                                 class="d-block ml-auto mr-auto d-inline">
+                        {% else %}
+                            <img src="{% static 'adminLte/dist/img/default-placeholder-150x250.png' %}" data-holder-rendered="true" height="500" width="350"
+                                 class="d-block ml-auto mr-auto d-inline">
+                        {% endif %}
+{#                        </a>#}
+                        {#            <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(1).jpg" data-holder-rendered="true"></a>#}
+
+                        <h3>{{ cin.name }}</h3>
+                        <p class="text-center"><a class="btn btn-primary btn-lg" href="#" role="button">Купить билет</a> </p>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="container" >
+            <div class="container">
+                <div class="row">
+                    <div class="text-center col-md-8 col-12 mx-auto">
+                        <br/><br/><br/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container" style="background: rgba(255,255,255,0.27)">
+            <div class="row">
+
+                <div class="col-lg-12 mb-4 mt-2 text-center">
+
+                    <h2>! Скоро !</h2>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container" style="background: rgba(255,255,255,0.27)">
+
+            <div class="row">
+
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(1).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(2).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(3).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(4).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(5).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(6).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(7).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(8).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(9).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(10).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                    <img alt="350x500" style="width: 350px; height: 500px;" src="../../static/images/films/film%20(11).jpg" data-holder-rendered="true">
+                    <h3>Название фильма</h3>
+                    <h5>З 1 лютого</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="background: rgba(255,255,255,0.27)">
+
+            <div class="text-center">
+                <h2>Новости и акции</h2>
+                <img style="width: 1000px; height: 500px; position: relative;" src="../../static/images/action.jpg" data-holder-rendered="true" alt="action">
+            </div>
+
+        </div>
+
+    </section>
+{% endblock %}

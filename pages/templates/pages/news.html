@@ -1,0 +1,57 @@
+{% extends "layout/basic.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h4 class="card-title btn btn-secondary align-items-center text-center">Новини</h4>
+{#            <h3><a href="{% url 'add_news_promo' 'News'%}" class="card-title btn btn-secondary">+</a></h3>#}
+        </div>
+        <div class="card-body">
+        <a type="submit" class="btn btn-primary" href="{% url 'add_news_promo' 'News'%}" style="width:100%"><h2>Створити</h2></a>
+            <table  class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date Create</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in news %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.date }}</td>
+                        <td>{% if item.active %}
+                            ON
+                            {% else %}
+                            OFF
+                        {% endif %}</td>
+
+                        <th class="border-0" width="48px"><a
+                                href="{% url 'update_news_promo' item.pk%}"
+                        ><img height="48px"
+                                                                   src="{% static 'cinema/img/pencil.png' %}"></a>
+                        </th>
+                        <td class="border-0" width="48px"><a onclick="return confirm('Are you sure?');"
+                               href="{% url 'delete_news_promo' item.pk  %}"
+                        ><img height="48px"
+                                                                   src="{% static 'cinema/img/trash-can.png' %}"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+{#        <a href="{% url 'add_news_promo' 'News'%}" class="btn btn-secondary">Add news</a>#}
+            </div>
+        </div>
+
+
+{% endblock %}
+{% block scripts %}
+    <script>
+        $('#nav_news').attr('class', 'nav-link active')
+    </script>
+{% endblock %}

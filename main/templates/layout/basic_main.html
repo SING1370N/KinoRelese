@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KinoCMS</title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="{% static 'images/ico/favicon_web.ico' %}">
+    <link href="{% static 'css/bootstrap-4.4.1.css' %}" rel="stylesheet">
+</head>
+{#<body style="background: #fff url({{ baner. }}) fixed;">#}
+<body style="background: #fff url(../../static/images/background.jpg) fixed;">
+<div style="">
+    <link rel="shortcut icon" type="image/png" href="{%static 'images/ico/favicon_web.ico' %}"/>
+
+    <p style="text-align: center; margin: 0 auto; background: rgba(255,255,255,0.1); color: white">Покупайте электронные билеты<br>и обходите очереди на кассах!<br>ОТПРАВЛЯЙТЕСЬ СРАЗУ В ЗАЛ!</p>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="/main"><img src="{%static 'images/title.png' %}" class="navbar-brand" width="200" height="160" alt=""/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"> <a class="nav-link" href="/poste">Афиша <span class="sr-only"></span></a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/schedule">Расписание</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/soon">Скоро</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/cinemas">Кинотеатры</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/promotions">Акции</a> </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/info" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> О кинотеатре </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/news">Новости</a>
+                    {% for page in pages %}
+                        {% if page.active %}
+                        <a class="dropdown-item" href="{% url 'page' page.pk %}">{{ page.name }}</a>
+                    {% endif %}
+                    {% endfor %}
+
+                    <a class="dropdown-item" href="/ads">Реклама</a>
+                    <a class="dropdown-item" href="/cafe">Кафе</a>
+                    <a class="dropdown-item" href="/mobile">Мобильное приложение</a>
+                    <a class="dropdown-item" href="">Контакты</a>
+                    {#                {%url 'main:other' page='about'%}#}
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a class="btn btn-outline-success my-3 mr-sm-2" href="{%url 'admin'%}">AdminLTE</a>
+            {#            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="/adminlte/">AdminLTE</button>#}
+            <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Поиск">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+        </form>
+    </div>
+</nav>
+
+
+
+{% block content %}
+{% endblock %}
+
+
+<footer class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p style="background: rgba(255,255,255,0.68)">KinoCMS. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-4.4.1.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends "layout/basic.html" %}
+{% load static %}
+{% block content %}
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h4 class="card-title btn btn-secondary">Pages</h4>
+        </div>
+        <div class="card-body">
+            <a type="submit" class="btn btn-primary" href="{% url 'add_page' %}" style="width:100%"><h2>Створити</h2></a>
+            <table  class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for page in pages %}
+                    {#                {% for item in promos %}#}
+                    <tr>
+                        <td>{{ page.name }}</td>
+                        <td>{% if page.active %}
+                            ON
+                        {% else %}
+                            OFF
+                        {% endif %}</td>
+
+                        <th class="border-0" width="48px"><a
+                                href="{% url 'update_page' page.pk%}"
+                        ><img height="48px"
+                              src="{% static 'cinema/img/pencil.png' %}"></a>
+                        </th>
+
+
+                        <td class="border-0" width="48px">
+                            {% if page.edit %}
+                            <a onclick="return confirm('Are you sure?');"
+                                                             href=" {% url 'delete_page' page.pk  %} "
+                        ><img height="48px"
+                              src="{% static 'cinema/img/trash-can.png' %}"></a>
+                                {% else %}
+                                <img height="48px"
+                              src="{% static 'cinema/img/sorry.png' %}">
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
+{% block scripts %}
+    <script>
+        $('#nav_pages').attr('class', 'nav-link active')
+    </script>
+{% endblock %}

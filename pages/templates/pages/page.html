@@ -1,0 +1,54 @@
+{% extends "layout/basic_main.html" %}
+{% load static %}
+{% block content %}
+    <header>
+        <div  style="background: rgba(255,255,255,0)">
+            <br/>
+        </div>
+    </header>
+
+    <section>
+        <div class="container" style="background: rgba(255,255,255,0.27)">
+            <div class="row">
+
+
+
+                <div class="">
+                    <img class="" src="{{ page_form.instance.main_image.url }}" width="1000" height="500" alt="image">
+{#                    <img src="{{ page_form.main_image.url }}" alt="">#}
+                </div>
+                <div class="">
+                    {{ page_form.description.value }}
+                </div>
+
+
+                {% block gallery_2 %}
+                    {% if images_formset %}
+                        <div class="form-group">
+                            {{ images_formset.management_form }}
+                            <label for="gallery_id" class="form-label"> </label>
+                            <div class="row" id="gallery_list">
+                                {% for image in images_formset  %}
+                                    {% for hidden in image.hidden_fields %}
+                                        {{ hidden }}
+                                    {% endfor %}
+                                    <div class="col-sm-2 d-inline-block" id="gallery_{{ image.prefix}}">
+                                        <div id="gallery_img" class="mx-auto position-relative" style="width: 150px">
+                                            <img id="img_{{ image.image.auto_id }}"
+                                                 src="{{ image.instance.image.url }}" alt="image">
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                            {#                <input type="button" value="Add More" id="add_more" class="btn btn-secondary">#}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
