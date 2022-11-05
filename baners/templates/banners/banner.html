@@ -145,12 +145,14 @@
 
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="row" >
-                    <div class="col-2 d-block">
-                        <div class="mt-auto mx-auto">
-                            {{ background_banner_form.is_image }}
-                        </div>
-                    </div>
+            <div class="form-check form-switch align-items-center align-content-center text-center">
+                    <h3>
+                        {{ background_banner_form.is_image }}
+                        <label class="form-check-label"
+                               for="{{ background_banner_form.is_image.id_for_label }}">Банер</label>
+                    </h3>
+                </div>
+                <div class="row">
                     <div id="background_img" class="col">
                         <div class="row" id="background_banner">
                             <div class="col-sm-2">

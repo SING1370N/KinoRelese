@@ -157,8 +157,19 @@ INTERNAL_IPS = [
     '192.168.1.3',
     # ...
 ]
+BROKER_URL = 'redis://default:redispw@localhost:55000'
+CELERY_RESULT_BACKEND = 'redis://default:redispw@localhost:55000'
+CELERY_BROKER_URL = 'redis://default:redispw@localhost:55000'
 
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
 
+# EMAIL_HOST = 'smtp.fastmail.com'
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = 'support@prettyprinted.com'
+# EMAIL_HOST_PASSWORD = 'xfjuka5246d8bvcg'
+# EMAIL_USE_TLS = False
+# EMAIL_USE_SSL = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

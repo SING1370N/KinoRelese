@@ -2,18 +2,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+
+from adminLte.models import Statistic
+from sendg.views import send
 from .models import User
-from .forms import CustomUserChangeForm, CustomUserCreationForm, Password
-from sendg import tg
-
-# Create your views here.
-# url_from = request.META['HTTP_REFERER']
-#         user = auth.authenticate(username=username, password=password)
-#         if user is not None and user.is_active:
-#             auth.login(request, user)
-#         return redirect(url_from)
-
-
+from .forms import CustomUserChangeForm, CustomUserCreationForm
 def login_page(request):
     if request.user.is_authenticated:
         return redirect('admin')
@@ -24,11 +17,8 @@ def login_page(request):
         # print(request.POST.get('next'))
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            tg.send_tg(request.META['HTTP_USER_AGENT'])
+            # send(request.META['HTTP_USER_AGENT'])
             # print(request.META['HTTP_USER_AGENT'])
-            # print("1:", request.get["next"])
-            # print("2:", request.META["HTTP_REFERER"])
-            # back_url = request.get["next"] or request.META["HTTP_REFERER"] or request.path
             login(request, user)
             # url_from = request.META['HTTP_REFERER']
             return redirect('admin')

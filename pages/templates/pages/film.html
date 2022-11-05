@@ -1,0 +1,299 @@
+{% extends "layout/basic_main.html" %}
+{% load static %}
+{% block content %}
+    <style>
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+
+#w3lDemoBar.w3l-demo-bar {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  padding: 40px 5px;
+  padding-top:70px;
+  margin-bottom: 70px;
+  background: #0D1326;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+
+#w3lDemoBar.w3l-demo-bar a {
+  display: block;
+  color: #e6ebff;
+  text-decoration: none;
+  line-height: 24px;
+  opacity: .6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#w3lDemoBar.w3l-demo-bar span.w3l-icon {
+  display: block;
+}
+
+#w3lDemoBar.w3l-demo-bar a:hover {
+  opacity: 1;
+}
+
+#w3lDemoBar.w3l-demo-bar .w3l-icon svg {
+  color: #e6ebff;
+}
+#w3lDemoBar.w3l-demo-bar .responsive-icons {
+  margin-top: 30px;
+  border-top: 1px solid #41414d;
+  padding-top: 40px;
+}
+#w3lDemoBar.w3l-demo-bar .demo-btns {
+  border-top: 1px solid #41414d;
+  padding-top: 30px;
+}
+#w3lDemoBar.w3l-demo-bar .responsive-icons a span.fa {
+  font-size: 26px;
+}
+#w3lDemoBar.w3l-demo-bar .no-margin-bottom{
+  margin-bottom:0;
+}
+.toggle-right-sidebar span {
+  background: #0D1326;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #e6ebff;
+  border-radius: 50px;
+  font-size: 26px;
+  cursor: pointer;
+  opacity: .5;
+}
+.pull-right {
+  float: right;
+  position: fixed;
+  right: 0px;
+  top: 70px;
+  width: 90px;
+  z-index: 99999;
+  text-align: center;
+}
+/* ============================================================
+RIGHT SIDEBAR SECTION
+============================================================ */
+
+#right-sidebar {
+  width: 90px;
+  position: fixed;
+  height: 100%;
+  z-index: 1000;
+  right: 0px;
+  top: 0;
+  margin-top: 60px;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  overflow-y: auto;
+}
+
+
+/* ============================================================
+RIGHT SIDEBAR TOGGLE SECTION
+============================================================ */
+
+.hide-right-bar-notifications {
+  margin-right: -300px !important;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+
+
+@media (max-width: 992px) {
+  #w3lDemoBar.w3l-demo-bar a.desktop-mode{
+      display: none;
+
+  }
+}
+@media (max-width: 767px) {
+  #w3lDemoBar.w3l-demo-bar a.tablet-mode{
+      display: none;
+
+  }
+}
+@media (max-width: 568px) {
+  #w3lDemoBar.w3l-demo-bar a.mobile-mode{
+      display: none;
+  }
+  #w3lDemoBar.w3l-demo-bar .responsive-icons {
+      margin-top: 0px;
+      border-top: none;
+      padding-top: 0px;
+  }
+  #right-sidebar,.pull-right {
+      width: 90px;
+  }
+  #w3lDemoBar.w3l-demo-bar .no-margin-bottom-mobile{
+      margin-bottom: 0;
+  }
+}
+</style>
+
+<section class="w3l-text-8 genre-single" >
+		<div class="container py-5" style="background-color: rgba(255,255,255,0.30)">
+			<div class="d-grid-1 py-lg-4">
+				<div class="text">
+					<h3 class="hny-title"><a href="#">{{ page_form.name }}</a></h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae laudantium
+						voluptate rem ullam dolore Nulla dolorem perferendis inventore! posuere cubilia Curae; Nunc non
+						risus in justo convallis feugiat.</p>
+
+					<div class="genre-single-page my-lg-5 my-4">
+						<div class="row ab-grids-sec align-items-center">
+							<div class="col-lg-4 gen-right">
+								<a href="#"><img class="img-fluid" src="{{ page_form.main_image.url }}" alt=""></a>
+							</div>
+							<div class="col-lg-8 gen-left pl-lg-4 mt-lg-0 mt-5">
+
+								<h3 class="hny-title">{{ page_form.name }}</h3>
+								<p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam id
+									quisquam ipsam
+									molestiae ad eius accusantium? Nulla dolorem perferendis inventore! posuere cubilia
+									Curae;
+									Nunc non risus in justo convallis feugiat.</p>
+								<ul class="admin-post mt-1">
+									<li>
+										<a href="#"><span class="fa fa-clock-o"></span> 12th May, 2020</a>
+									</li>
+									<li>
+										<a href="#"><span class="fa fa-user"></span> Admin</a>
+									</li>
+									<li>
+										<a href="#"><span class="fa fa-heart-o"></span> 50</a>
+									</li>
+									<li>
+										<a href="#"><span class="fa fa-comments-o"></span> 20
+											Comments</a>
+									</li>
+								</ul>
+								<div class="share-more d-flex mt-4">
+									<a href="#" class="btn read-button">Buy From $10 </a>
+									<a href="#" class="btn read-button ml-3">Preview</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="genre-single-page mb-lg-5 mb-4">
+						<div class="row ab-grids-sec">
+							<div class="col-lg-5 gen-right-1">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam id quisquam ipsam
+									molestiae ad eius accusantium? Nulla dolorem perferendis inventore! posuere cubilia
+									Curae;
+									Nunc non risus in justo convallis feugiat.</p>
+							</div>
+							<div class="col-lg-2 gen-right-1">
+								<div class="mb-3">
+									<p><b>Producer :</b> </p>
+									<p>Jhon Lee </p>
+								</div>
+								<div class="mb-3">
+									<p><b>Director :</b> </p>
+									<p>Sanjay Dev </p>
+								</div>
+								<div class="mb-3">
+									<p><b>Editor :</b> </p>
+									<p>Om shakir</p>
+								</div>
+							</div>
+							<div class="col-lg-5 gen-right-1">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam id quisquam ipsam
+									molestiae ad eius accusantium? Nulla dolorem perferendis inventore! posuere cubilia
+									Curae;
+									Nunc non risus in justo convallis feugiat.</p>
+							</div>
+						</div>
+					</div>
+					<div class="w3l-about4" id="about">
+						<div class="new-block">
+							<div class="pop-img-ab position-relative">
+								<div class="history-info">
+									<!-- <a href="#popup-video" class="play-view text-center position-absolute">
+												  <span class="video-play-icon">
+													  <span class="fa fa-play"></span>
+												  </span>
+											  </a> -->
+
+									<a href="#small-dialog" class="popup-with-zoom-anim play-view text-center position-absolute">
+										<span class="video-play-icon">
+											<span class="fa fa-play"></span>
+										</span>
+									</a>
+
+									<!-- dialog itself, mfp-hide class is required to make dialog hidden -->
+									<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+										<iframe src="https://player.vimeo.com/video/395376850" frameborder="0" allow="autoplay; fullscreen" allowfullscreen=""></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+						<div class="w3l-blog-single comments mt-5">
+							<h3 class="post-content-title">Recent Comments</h3>
+
+							<div class="media mt-5">
+								<div class="img-circle">
+								</div>
+								<div class="media-body">
+									<h5 class="mt-0">William James</h5>
+									<span class="time">29 minutes ago</span>
+									<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, officiis rerum
+										assumenda facere maxime accusamus cum. Numquam harum vitae id. Nemo qui fugiat
+										nam quasi?</p>
+									<a href="#reply-form" class="reply">Reply</a>
+
+									<div class="media mt-3">
+										<a class="" href="#">
+											<div class="img-circle img-circle-sm">
+											</div>
+										</a>
+										<div class="media-body">
+											<h5 class="mt-0">Benjamin Lucas</h5>
+											<span class="time">4 hours ago</span>
+											<p>In gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras
+												purus odio. Fusce condimentum nunc ac nisi vulputate
+												fringilla. Donec lacinia congue felis in faucibus.</p>
+											<a href="#reply-form" class="reply">Reply</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="media mt-5">
+								<div class="img-circle">
+									<img src="assets/images/c3.jpg" class="mr-3 rounded-circle" alt="...">
+								</div>
+								<div class="media-body">
+									<h5 class="mt-0">Isabella Mia</h5>
+									<span class="time">16 hours ago</span>
+									<p>Facere atque minus necessitatibus deserunt quibusdam voluptas quo? Omnis
+										temporibus at, reprehenderit exercitationem dolores fuga, iste quidem earum
+										nihil iusto repellendus. Assumenda alias illo dignissimos corrupti doloribus.
+										</p>
+									<a href="#reply-form" class="reply">Reply</a>
+								</div>
+							</div>
+
+
+						</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

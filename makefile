@@ -1,8 +1,14 @@
 MANAGE = python3 manage.py
 run:
 	$(MANAGE) runserver 192.168.1.3:8000
+
 rd:
-	$(MANAGE) runserver
+	$(MANAGE) makemigrations
+	$(MANAGE) migrate
+	$(MANAGE) makemigrations
+	$(MANAGE) migrate
+
+
 migrate:
 	$(MANAGE) migrate
 migrations:

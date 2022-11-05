@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+from adminLte.models import Statistic
 from .models import Cinema, Film, Hall, Session
 
 
@@ -12,6 +14,7 @@ admin.site.register(Film, FilmAdmin)
 admin.site.register(Cinema)
 admin.site.register(Hall)
 admin.site.register(Session)
+admin.site.register(Statistic)
 
 
 # admin.site.register()

@@ -1,6 +1,6 @@
 # from django.template.defaulttags import url
 from django.urls import path
-from .views import index, cinema, about, other_page, news
+from .views import index, cinema, about, other_page, news, schedule
 from django.views.generic import RedirectView
 
 app_name = 'main'
@@ -10,7 +10,7 @@ urlpatterns = [
     # path(r'^favicon\.ico$', RedirectView.as_view(url='/static/images/favicon.ico')),
     path('main/', index, name='main'),
     path('poste/', index, name='index'),
-    path('schedule/', index, name='index'),
+    path('schedule/', schedule, name='schedule'),
     path('soon/', index, name='index'),
     path('cinemas/', cinema, name='cinema'),
     path('promotions/', index, name='index'),

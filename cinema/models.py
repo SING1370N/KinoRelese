@@ -45,12 +45,13 @@ class Hall(models.Model):
     gallery = models.ForeignKey(Image_gallery, on_delete=models.PROTECT)
     seo = models.OneToOneField(SEO, on_delete=models.PROTECT)
     date_create = models.DateTimeField(auto_now_add=True)
+    positions = models.JSONField(default=dict)
 
 
 class Session(models.Model):
     film = models.ForeignKey(Film, on_delete=models.CASCADE)
     hall = models.ForeignKey(Hall, on_delete=models.CASCADE)
-    price = models.SmallIntegerField()
+    price = models.FloatField()
     time = models.TimeField()
     type_3D = models.BooleanField()
     type_DBOX = models.BooleanField()

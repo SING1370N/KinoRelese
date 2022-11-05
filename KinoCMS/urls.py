@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 import KinoCMS.views
-from pages.views import page
+from cinema.views import buy
+from pages.views import page, film_page
 from main.views import index
 from users.views import login_page, create_user, logout_user
 from django.conf.urls.static import static
@@ -37,6 +38,8 @@ urlpatterns = [
 
     path('main/', index, name='main'),
     path('page/<int:page_id>', page, name='page'),
+    path('film/<int:film_id>', film_page, name='film_page'),
+    path('buy/<int:film_id>', buy, name='buy'),
 
     path('login/', login_page, name='Login'),
     path('register/', create_user, name='Register'),

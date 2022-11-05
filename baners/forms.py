@@ -32,7 +32,7 @@ class BackgroundBannerForm(forms.ModelForm):
 
     color = forms.CharField(widget=forms.TextInput(attrs={'type': "color",
                                                           'class': "form-control form-control-color"}))
-    is_image = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect(attrs={}))
+    is_image = forms.BooleanField(widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}), required=False)
 
     # is_image = forms.BooleanField
     class Meta:

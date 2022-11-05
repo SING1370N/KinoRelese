@@ -1,9 +1,8 @@
 from django import forms
 from django.forms import modelformset_factory, inlineformset_factory
 
-from .models import Film, Hall, Cinema
-from gallery_seo.models import Image_gallery, SEO
-from gallery_seo.forms import SeoForm, GalleryForm
+from .models import Film, Hall, Cinema, Session
+from gallery_seo.forms import GalleryForm
 
 
 class FilmForm(forms.ModelForm):
@@ -23,6 +22,10 @@ class FilmForm(forms.ModelForm):
         model = Film
         fields = ['type_IMAX', 'type_3D', 'type_2D', 'description', 'name', 'trailer_url', 'date', 'main_image']
         # fields = '__all__'
+
+
+class PositionForm(forms.ModelForm):
+    position = forms.JSONField()
 
 
 class HallForm(forms.ModelForm):
@@ -47,3 +50,13 @@ class CinemaForm(forms.ModelForm):
 
 
 HallFormSet = modelformset_factory(Hall, form=HallForm, can_delete=True)
+
+
+class SessionForm(forms.ModelForm):
+    film = FilmForm()
+    hall = HallForm()
+    price = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    time = forms.TimeField(widget=forms.TimeInput(attrs={'class': 'form-control'}))
+    type_3D = forms.BooleanField(widget=forms.CheckboxInput())
+    type_DBOX = forms.BooleanField(widget=forms.CheckboxInput())
+    type_VIP = forms.BooleanField(widget=forms.CheckboxInput())
