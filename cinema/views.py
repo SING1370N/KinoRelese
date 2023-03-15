@@ -15,7 +15,7 @@ def index(request):
 
 def buy(request, film_id):
     film = get_object_or_404(Film, id=film_id)
-    obj = get_object_or_404(Hall, id=film)
+    obj = get_object_or_404(Hall, id=film.pk)
     gallery_qs = Image.objects.filter(galleryId=obj.gallery.pk)
 
     if request.method == 'POST':
@@ -28,7 +28,8 @@ def buy(request, film_id):
         seo_form = SeoForm(instance=obj.seo)
     # print(request.POST)
     print(obj.positions)
-    context = {'hall_form': hall_form,
+    context = {'film': film,
+                'hall_form': hall_form,
                'seo_form': seo_form,
                'images_formset': image_form_set,
                'json_form': obj.positions
